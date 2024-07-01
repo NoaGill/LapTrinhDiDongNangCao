@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_didongnangcao/page/favorite/favoritewidget.dart';
+import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
+import 'package:flutter_application_didongnangcao/page/offer/offerwidget.dart';
+import 'page/home/homewidget.dart';
 // import 'package:flutter_application_lab_7/page/homewiget.dart';
 // import 'package:flutter_application_lab_7/page/product/productlist.dart';
 // import 'package:flutter_application_lab_7/page/product/productcart.dart';
@@ -22,6 +26,12 @@ class _MainpageState extends State<Mainpage> {
       _selectedIndex = index;
     });
   }
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomeWidget(),
+    Favoritewidget(),
+    Offerwidget(),
+    InfoWidget(),
+  ];
   
   @override
   Widget build(BuildContext context) {
@@ -48,7 +58,7 @@ class _MainpageState extends State<Mainpage> {
         ],
       ),
       body: Container(
-        // child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions.elementAt(_selectedIndex),
         color: const Color.fromRGBO(227, 34, 39, 1),
        
       ),
