@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
+import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
 import 'mainpage.dart';
 
 void main() {
@@ -12,7 +13,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-    home: Mainpage(),)
-    ;
+    home: DangNhap(),);
   }
 }
