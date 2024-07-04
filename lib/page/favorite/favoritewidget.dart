@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
 
 class Favoritewidget extends StatelessWidget {
   const Favoritewidget({super.key});
@@ -35,13 +36,16 @@ class Favoritewidget extends StatelessWidget {
                             width: 125, height: 125),
                         SizedBox(width: 16),
                         Column(
-                          //mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("Ẩm Thực Quê Nhà",
                                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
                             const Text("28 Phạm Ngọc Thạch, P6, Q3"),
                             OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () {Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => RestaurentScreen()),
+                          );},
                               child: const Text(
                                 "Đặt bàn ngay",
                               ),
@@ -65,7 +69,7 @@ class Favoritewidget extends StatelessWidget {
                             width: 125, height: 125),
                         SizedBox(width: 16),
                         Column(
-                          //mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("The LOG - GemCT",
                                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
@@ -94,7 +98,7 @@ class Favoritewidget extends StatelessWidget {
                             width: 125, height: 125),
                         SizedBox(width: 16),
                         Column(
-                          //mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("Lạc Thái 7",
                                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
@@ -123,7 +127,7 @@ class Favoritewidget extends StatelessWidget {
                             width: 125, height: 125),
                         SizedBox(width: 16),
                         Column(
-                          //mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("San Fu Lou 1",
                                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),

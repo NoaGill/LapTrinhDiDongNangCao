@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_didongnangcao/page/favorite/favoritewidget.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
-import 'package:flutter_application_didongnangcao/page/offer/offerwidget.dart';
+import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
 import 'page/home/homewidget.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangki.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
@@ -30,7 +30,7 @@ class _MainpageState extends State<Mainpage> {
   }
 
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeWidget(),
+    Homewidget(),
     Favoritewidget(),
     InfoWidget(),
   ];
@@ -38,12 +38,14 @@ class _MainpageState extends State<Mainpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       appBar: AppBar(
         title: const Text(
           "Triangle",
           style: TextStyle(color: Colors.white, fontSize: 32),
         ),
         backgroundColor: Color.fromRGBO(227, 34, 39, 1),
+        
         actions: <Widget>[
           IconButton(
             icon:
@@ -78,8 +80,8 @@ class _MainpageState extends State<Mainpage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Text('Triangle'),
-                  Text('triangle@company.com'),
+                  Text('Guest',style: TextStyle(color: Colors.white),),
+                  Text('guest@person.com',style: TextStyle(color: Colors.white),),
                 ],
               ),
             ),
