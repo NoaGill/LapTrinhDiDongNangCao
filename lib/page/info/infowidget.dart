@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_didongnangcao/page/info/changeinfowidget.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
 
 //import 'package:flutter_application_lab_7/data/model/productmodel.dart';
@@ -7,6 +8,9 @@ import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 //import '../../data/model/product_viewmodel.dart';
 
@@ -18,14 +22,29 @@ class InfoWidget extends StatefulWidget {
 }
 
 class _InfoWidgetState extends State<InfoWidget> {
-  final _nameController = TextEditingController();
-  final _birthdayController = TextEditingController();
-  final _nationController = TextEditingController();
-  final _phoneNumberController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _genderController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _birthdayController = TextEditingController();
+  final TextEditingController _nationController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
+  final TextEditingController _imgController = TextEditingController();
+  File? _image;
   List listitem = ["Việt Nam", "Nước Ngoài"];
   var selectedNationality = '';
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+        _imgController.text =
+            pickedFile.path; // Save the image path in the controller
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,128 +65,166 @@ class _InfoWidgetState extends State<InfoWidget> {
                         color: Color.fromRGBO(227, 34, 39, 1)),
                   ),
                 ),
-                Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment
-                        .spaceBetween, // Sắp xếp các widget con cách đều nhau
-                    children: [
-                      Container(
-                        width: 150,
-                        height: 150,
-                        child: ClipOval(
-                          child: Image.asset(
-                            'assets/images/Rose.png',
-                            width: 50,
-                            height: 50,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        flex: 2,
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            labelText: 'Tên',
-                            hintText: 'Nhập tên của bạn',
-                            filled: true, // Bật nền cho trường
-                            fillColor: Colors.white, // Màu nền
-                            contentPadding:
-                                EdgeInsets.all(15.0), // Khoảng cách nội dung
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(
-                                  20.0), // Bo tròn các góc
-                            ),
-                          ),
-                        ),
-                      ),
-                    ]),
-                //nhap fullname
-                const SizedBox(height: 16),
-                //email
-                Column(
-                  children: [
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Ngày sinh',
-                        hintText: 'Nhập ngày sinh của bạn',
-                        filled: true, // Bật nền cho trường
-                        fillColor: Colors.white, // Màu nền
-                        contentPadding:
-                            EdgeInsets.all(15.0), // Khoảng cách nội dung
-                        border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(20.0), // Bo tròn các góc
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        hintText: 'Nhập email của bạn',
-                        filled: true, // Bật nền cho trường
-                        fillColor: Colors.white, // Màu nền
-                        contentPadding:
-                            EdgeInsets.all(15.0), // Khoảng cách nội dung
-                        border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(20.0), // Bo tròn các góc
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Quốc tịch',
-                        hintText: 'Nhập quốc tịch của bạn',
-                        filled: true, // Bật nền cho trường
-                        fillColor: Colors.white, // Màu nền
-                        contentPadding:
-                            EdgeInsets.all(15.0), // Khoảng cách nội dung
-                        border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(20.0), // Bo tròn các góc
-                        ),
-                      ),
-                    ),
-
-                    // Expanded(child:
-                    // DropdownButton<String>(
-                    //     hint: const Text("Chọn quốc tịch"),
-                    //     value: selectedNationality,
-                    //     onChanged: (newValue) {
-                    //       setState(() {
-                    //         selectedNationality = newValue.toString();
-                    //       });
-                    //     }, items: ['Việt nam', 'Nước ngoài'].map((option) => DropdownMenuItem<String>(
-                    //       value: option,
-                    //       child: Text(option))).toList(),
-                    //       disabledHint: Text("Chọn một tùy chọn"),
-
-                    //   ),
-
-                    // ),
-
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        labelText: 'Số điện thoại',
-                        hintText: 'Nhập số điện thoại của bạn',
-                        filled: true, // Bật nền cho trường
-                        fillColor: Colors.white, // Màu nền
-                        contentPadding:
-                            EdgeInsets.all(15.0), // Khoảng cách nội dung
-                        border: OutlineInputBorder(
-                          borderRadius:
-                              BorderRadius.circular(20.0), // Bo tròn các góc
-                        ),
-                      ),
-                    ),
-                  ],
+                ClipOval(
+                  child: Image.asset(
+                    'assets/images/Rose.png',
+                    width: 100,
+                    height: 100,
+                  ),
                 ),
                 const SizedBox(height: 16),
+                const Row(
+                    // Sắp xếp các widget con cách đều nhau
+                    children: [
+                      Expanded(
+                        flex: 1,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.edit_outlined,
+                          size: 24.0,
+                        ),
+                      )),
+                      Expanded(
+                        flex: 3,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Tên người dùng")
+                      )),
+                      Expanded(
+                        flex: 6,
+                          child: Text(
+                        "Lê Hữu Bền",
+                        textAlign: TextAlign.end,
+                      )),
+                    ]),
+                //nhap fullname
+                const Divider(
+                  color: Colors.grey,
+                ),
+                const SizedBox(height: 16),
+                //email
+                const Row(
+                    // Sắp xếp các widget con cách đều nhau
+                    children: [
+                      Expanded(
+                        flex: 1,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.phone_outlined,
+                          size: 24.0,
+                        ),
+                      )),
+                      Expanded(
+                        flex: 3,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Số điện thoại")
+                      )),
+                      Expanded(
+                        flex: 6,
+                          child: Text(
+                        "0367703344",
+                        textAlign: TextAlign.end,
+                      )),
+                    ]),
+                //nhap fullname
+                const Divider(
+                  color: Colors.grey,
+                ),
+                const SizedBox(height: 16),
+                const Row(
+                    // Sắp xếp các widget con cách đều nhau
+                    children: [
+                      Expanded(
+                        flex: 1,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.email_outlined,
+                          size: 24.0,
+                        ),
+                      )),
+                      Expanded(
+                        flex: 3,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Email")
+                      )),
+                      Expanded(
+                        flex: 6,
+                          child: Text(
+                        "lehuuben@gmail.com",
+                        textAlign: TextAlign.end,
+                      )),
+                    ]),
+                //nhap fullname
+                const Divider(
+                  color: Colors.grey,
+                ),
+                const SizedBox(height: 16),
+                const Row(
+                    // Sắp xếp các widget con cách đều nhau
+                    children: [
+                      Expanded(
+                        flex: 1,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.male_outlined,
+                          size: 24.0,
+                        ),
+                      )),
+                      Expanded(
+                        flex: 3,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Giới tính")
+                      )),
+                      Expanded(
+                        flex: 6,
+                          child: Text(
+                        "Nam",
+                        textAlign: TextAlign.end,
+                      )),
+                    ]),
+                //nhap fullname
+                const Divider(
+                  color: Colors.grey,
+                ),
+                const SizedBox(height: 16),
+                const Row(
+                    // Sắp xếp các widget con cách đều nhau
+                    children: [
+                      Expanded(
+                        flex: 1,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Icon(
+                          Icons.cake_outlined,
+                          size: 24.0,
+                        ),
+                      )),
+                      Expanded(
+                        flex: 3,
+                          child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text("Ngày sinh")
+                      )),
+                      Expanded(
+                        flex: 6,
+                          child: Text(
+                        "24/08/2003",
+                        textAlign: TextAlign.end,
+                      )),
+                    ]),
+                //nhap fullname
+                const Divider(
+                  color: Colors.grey,
+                ),
+                const SizedBox(height: 16),
+                
                 //nut dang ki
                 const SizedBox(height: 32),
                 Row(
@@ -176,18 +233,14 @@ class _InfoWidgetState extends State<InfoWidget> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          var fullname = _nameController.text;
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                content: Text("Fullname: $fullname"),
-                              );
-                            },
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Changeinfowidget()),
                           );
                         },
                         child: const Text(
-                          "Save",
+                          "Thay đổi thông tin",
                           style: TextStyle(color: Colors.white),
                         ),
                         style: const ButtonStyle(
@@ -206,7 +259,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                           );
                         },
                         child: const Text(
-                          "Logout",
+                          "Đăng xuất",
                           style: TextStyle(color: Colors.white),
                         ),
                         style: const ButtonStyle(

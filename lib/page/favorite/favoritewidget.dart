@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
+import 'package:flutter_application_didongnangcao/page/order/order.dart';
 
 class Favoritewidget extends StatelessWidget {
   const Favoritewidget({super.key});
@@ -44,7 +45,7 @@ class Favoritewidget extends StatelessWidget {
                             OutlinedButton(
                               onPressed: () {Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => RestaurentScreen()),
+                            MaterialPageRoute(builder: (context) => OrderWidhet()),
                           );},
                               child: const Text(
                                 "Đặt bàn ngay",
@@ -57,8 +58,15 @@ class Favoritewidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(width: 10),
-                        Image.asset("assets/images/heart.png",width: 20,height: 20,),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          
+                          child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
+                      ))
+                        
+                        ,
                       ],
                     ),
                     SizedBox(height: 15),
@@ -88,7 +96,12 @@ class Favoritewidget extends StatelessWidget {
                           ],
                         ),
                         SizedBox(width: 10),
-                        Image.asset("assets/images/heart.png",width: 20,height: 20,),
+                        Expanded(
+                          
+                          child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
+                      ))
                       ],
                     ),SizedBox(height: 15),
                      Row(
@@ -117,7 +130,12 @@ class Favoritewidget extends StatelessWidget {
                           ],
                         ),
                         SizedBox(width: 10),
-                        Image.asset("assets/images/heart.png",width: 20,height: 20,),
+                        Expanded(
+                          
+                          child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
+                      ))
                       ],
                     ),SizedBox(height: 15),
                      Row(
@@ -146,7 +164,12 @@ class Favoritewidget extends StatelessWidget {
                           ],
                         ),
                         SizedBox(width: 10),
-                        Image.asset("assets/images/heart.png",width: 20,height: 20,),
+                        Expanded(
+                          
+                          child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
+                      ))
                       ],
                     ),
                   ],

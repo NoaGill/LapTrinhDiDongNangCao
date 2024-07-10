@@ -80,8 +80,8 @@ class _MainpageState extends State<Mainpage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Text('Guest',style: TextStyle(color: Colors.white),),
-                  Text('guest@person.com',style: TextStyle(color: Colors.white),),
+                  Text('Lê Hữu Bền',style: TextStyle(color: Colors.white),),
+                  Text('lehuuben@gmail.com',style: TextStyle(color: Colors.white),),
                 ],
               ),
             ),
@@ -117,7 +117,7 @@ class _MainpageState extends State<Mainpage> {
             ),
             ListTile(
               leading: Icon(Icons.person),
-              title: Text('Đăng ký'),
+              title: Text('Đăng Nhập'),
               onTap: () {
                 Navigator.push(
                   context,
@@ -127,7 +127,7 @@ class _MainpageState extends State<Mainpage> {
             ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
-              title: const Text('Đăng nhập'),
+              title: const Text('Đăng Xuất'),
               onTap: () {
                 Navigator.push(
                   context,

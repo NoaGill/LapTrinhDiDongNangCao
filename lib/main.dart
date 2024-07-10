@@ -3,6 +3,7 @@ import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
 import 'package:flutter_application_didongnangcao/page/home/homewidget.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
+import 'package:flutter_application_didongnangcao/page/order/order.dart';
 import 'mainpage.dart';
 
 void main() {
