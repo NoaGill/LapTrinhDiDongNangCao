@@ -85,7 +85,7 @@ class _ChangeInfoWidgetState extends State<Changeinfowidget> {
                         height: 150,
                         child: ClipOval(
                           child: Image.asset(
-                            'assets/images/Rose.png',
+                            'assets/images/user.png',
                             width: 50,
                             height: 50,
                           ),

@@ -40,13 +40,17 @@ class Favoritewidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("Ẩm Thực Quê Nhà",
-                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
                             const Text("28 Phạm Ngọc Thạch, P6, Q3"),
                             OutlinedButton(
-                              onPressed: () {Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => OrderWidhet()),
-                          );},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OrderWidhet()),
+                                );
+                              },
                               child: const Text(
                                 "Đặt bàn ngay",
                               ),
@@ -60,17 +64,17 @@ class Favoritewidget extends StatelessWidget {
                         ),
                         const SizedBox(width: 10),
                         Expanded(
-                          
-                          child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
-                      ))
-                        
-                        ,
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Image.asset(
+                                  "assets/images/heart.png",
+                                  width: 20,
+                                  height: 20,
+                                ))),
                       ],
                     ),
                     SizedBox(height: 15),
-                     Row(
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset("assets/images/gemcenter.png",
@@ -80,7 +84,8 @@ class Favoritewidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("The LOG - GemCT",
-                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
                             const Text("8 N.B.K, P Đa Kao, Q1"),
                             OutlinedButton(
                               onPressed: () {},
@@ -97,14 +102,17 @@ class Favoritewidget extends StatelessWidget {
                         ),
                         SizedBox(width: 10),
                         Expanded(
-                          
-                          child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
-                      ))
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Image.asset(
+                                  "assets/images/heart.png",
+                                  width: 20,
+                                  height: 20,
+                                )))
                       ],
-                    ),SizedBox(height: 15),
-                     Row(
+                    ),
+                    SizedBox(height: 15),
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset("assets/images/lacthai.png",
@@ -114,7 +122,8 @@ class Favoritewidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("Lạc Thái 7",
-                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
                             const Text("48 Bis Xuân Thủy, P T.D, Q2"),
                             OutlinedButton(
                               onPressed: () {},
@@ -131,14 +140,17 @@ class Favoritewidget extends StatelessWidget {
                         ),
                         SizedBox(width: 10),
                         Expanded(
-                          
-                          child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
-                      ))
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Image.asset(
+                                  "assets/images/heart.png",
+                                  width: 20,
+                                  height: 20,
+                                )))
                       ],
-                    ),SizedBox(height: 15),
-                     Row(
+                    ),
+                    SizedBox(height: 15),
+                    Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset("assets/images/sanfulou.png",
@@ -148,7 +160,8 @@ class Favoritewidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Text("San Fu Lou 1",
-                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)),
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
                             const Text("76A Lê Lai, P Bến Nghé, Q1"),
                             OutlinedButton(
                               onPressed: () {},
@@ -165,11 +178,13 @@ class Favoritewidget extends StatelessWidget {
                         ),
                         SizedBox(width: 10),
                         Expanded(
-                          
-                          child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Image.asset("assets/images/heart.png",width: 20,height: 20,)
-                      ))
+                            child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Image.asset(
+                                  "assets/images/heart.png",
+                                  width: 20,
+                                  height: 20,
+                                )))
                       ],
                     ),
                   ],

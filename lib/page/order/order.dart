@@ -9,8 +9,8 @@ class OrderWidhet extends StatefulWidget {
 
 class _OrderWidhetState extends State<OrderWidhet> {
   final TextEditingController _birthdayController = TextEditingController();
-   TextEditingController _personController = TextEditingController();
-   TextEditingController _childController = TextEditingController();
+  TextEditingController _personController = TextEditingController();
+  TextEditingController _childController = TextEditingController();
   Future<void> _selecteDate() async {
     DateTime? _picked = await showDatePicker(
       context: context,
@@ -28,6 +28,15 @@ class _OrderWidhetState extends State<OrderWidhet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white, // Thay đổi màu ở đây
+          ),
+          title: const Text(
+            "Triangle",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          backgroundColor: Color.fromRGBO(227, 34, 39, 1)),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Center(
@@ -40,7 +49,7 @@ class _OrderWidhetState extends State<OrderWidhet> {
                   child: const Text(
                     "Ẩm thực quê nhà",
                     style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: Color.fromRGBO(227, 34, 39, 1)),
                   ),
@@ -83,7 +92,6 @@ class _OrderWidhetState extends State<OrderWidhet> {
                         child: TextFormField(
                           controller: _personController,
                           decoration: InputDecoration(
-                            
                             filled: true, // Bật nền cho trường
                             fillColor: Colors.white, // Màu nền
                             contentPadding:
@@ -93,12 +101,11 @@ class _OrderWidhetState extends State<OrderWidhet> {
                                   20.0), // Bo tròn các góc
                             ),
                           ),
-                          
                           keyboardType: TextInputType.number,
                         ),
                       ),
                       // Expanded(flex: 1, child: ElevatedButton(
-                        
+
                       //   onPressed: () {
                       //     // Navigator.push(
                       //     //   context,
@@ -123,7 +130,7 @@ class _OrderWidhetState extends State<OrderWidhet> {
                 ),
                 const SizedBox(height: 16),
                 //email
-                 Row(
+                Row(
                     // Sắp xếp các widget con cách đều nhau
                     children: [
                       Expanded(
@@ -145,7 +152,6 @@ class _OrderWidhetState extends State<OrderWidhet> {
                         child: TextFormField(
                           controller: _childController,
                           decoration: InputDecoration(
-                            
                             filled: true, // Bật nền cho trường
                             fillColor: Colors.white, // Màu nền
                             contentPadding:
@@ -155,7 +161,6 @@ class _OrderWidhetState extends State<OrderWidhet> {
                                   20.0), // Bo tròn các góc
                             ),
                           ),
-                          
                           keyboardType: TextInputType.number,
                         ),
                       ),
@@ -350,11 +355,14 @@ class _OrderWidhetState extends State<OrderWidhet> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (context) => Changeinfowidget()),
-                          // );
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: Text("Đặt bàn thành công!"),
+                              );
+                            },
+                          );
                         },
                         child: const Text(
                           "Tiếp tục",

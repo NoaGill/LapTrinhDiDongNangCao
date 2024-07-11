@@ -67,7 +67,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                 ),
                 ClipOval(
                   child: Image.asset(
-                    'assets/images/Rose.png',
+                    'assets/images/user.png',
                     width: 100,
                     height: 100,
                   ),

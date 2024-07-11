@@ -40,6 +40,9 @@ class _MainpageState extends State<Mainpage> {
     return Scaffold(
       
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Colors.white, // Thay đổi màu ở đây
+          ),
         title: const Text(
           "Triangle",
           style: TextStyle(color: Colors.white, fontSize: 32),
@@ -74,8 +77,7 @@ class _MainpageState extends State<Mainpage> {
                 children: const [
                   CircleAvatar(
                     radius: 40,
-                    backgroundImage: NetworkImage(
-                        'https://media-cdn-v2.laodong.vn/storage/newsportal/2022/9/9/1090978/Rose-8B1a.jpg'),
+                    backgroundImage: AssetImage('assets/images/user.png'),
                   ),
                   SizedBox(
                     height: 8,
