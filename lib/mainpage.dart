@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_didongnangcao/page/category/category_list.dart';
 import 'package:flutter_application_didongnangcao/page/favorite/favoritewidget.dart';
+import 'package:flutter_application_didongnangcao/page/history/history_screen.dart';
 import 'package:flutter_application_didongnangcao/page/home/home_list.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
 import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
@@ -11,18 +12,9 @@ import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
 import 'dart:convert';
 import 'package:flutter_application_didongnangcao/model/category.dart';
 import 'package:flutter_application_didongnangcao/model/user.dart';
-//import 'package:flutter_application_didongnangcao/page/cart/cart_screen.dart';
 import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
-//import 'package:flutter_application_didongnangcao/page/history/history_screen.dart';
-//import 'package:flutter_application_didongnangcao/page/home/home_screen.dart';
-// import 'package:flutter_application_didongnangcao/route/page1.dart';
-// import 'package:flutter_application_didongnangcao/route/page2.dart';
-// import 'package:flutter_application_didongnangcao/route/page3.dart';
-import 'package:flutter/material.dart';
-//import 'app/page/defaultwidget.dart';
 import 'data/sharepre.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 class Mainpage extends StatefulWidget {
   const Mainpage({Key? key}) : super(key: key);
 
@@ -35,7 +27,7 @@ class _MainpageState extends State<Mainpage> {
   User user = User.userEmpty();
   //int _selectedIndex = 0;
   //static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-   getDataUser() async {
+  getDataUser() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String strUser = pref.getString('user')!;
 
@@ -57,8 +49,6 @@ class _MainpageState extends State<Mainpage> {
     });
   }
 
-  
-
   static const List<Widget> _widgetOptions = <Widget>[
     HomeBuilder(),
     Favoritewidget(),
@@ -67,7 +57,6 @@ class _MainpageState extends State<Mainpage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -78,7 +67,7 @@ class _MainpageState extends State<Mainpage> {
           style: TextStyle(color: Colors.white, fontSize: 32),
         ),
         backgroundColor: Color.fromRGBO(227, 34, 39, 1),
-        
+
         actions: <Widget>[
           IconButton(
             icon: Image.asset(
@@ -101,13 +90,13 @@ class _MainpageState extends State<Mainpage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
+            DrawerHeader(
               decoration: const BoxDecoration(
                 color: Color.fromRGBO(227, 34, 39, 1),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:  [
+                children: [
                   CircleAvatar(
                     radius: 40,
                     backgroundImage: AssetImage('assets/images/user.png'),
@@ -126,7 +115,6 @@ class _MainpageState extends State<Mainpage> {
                 ],
               ),
             ),
-          
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text('Trang chủ'),
@@ -154,6 +142,16 @@ class _MainpageState extends State<Mainpage> {
                 setState(() {});
               },
             ),
+            ListTile(
+              leading: Icon(Icons.supervised_user_circle),
+              title: Text('History'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HistoryScreen()),
+                );
+              },
+            ),
             const Divider(
               color: Colors.black,
             ),
@@ -177,29 +175,28 @@ class _MainpageState extends State<Mainpage> {
                 );
               },
             ),
-            if(user.idNumber == "082203004113")
-                ListTile(
+            if (user.idNumber == "082203004113")
+              ListTile(
                 leading: const Icon(Icons.exit_to_app),
                 title: const Text('Quản Lí'),
                 onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProductList()),
-                    ); 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductList()),
+                  );
                 },
               ),
-           if(user.idNumber == "082203004113")
-                ListTile(
+            if (user.idNumber == "082203004113")
+              ListTile(
                 leading: const Icon(Icons.exit_to_app),
                 title: const Text('Quản Lí Danh Mục'),
                 onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CategoryList()),
-                    ); 
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CategoryList()),
+                  );
                 },
               ),
-            
           ],
         ),
       ),

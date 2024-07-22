@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_didongnangcao/model/user.dart';
 import 'package:flutter_application_didongnangcao/page/info/changeinfowidget.dart';
