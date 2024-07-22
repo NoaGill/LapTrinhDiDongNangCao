@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_didongnangcao/auth/login.dart';
 import 'package:flutter_application_didongnangcao/model/user.dart';
 import 'package:flutter_application_didongnangcao/page/info/changeinfowidget.dart';
+import 'package:flutter_application_didongnangcao/page/info/detailupdate.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
 
 //import 'package:flutter_application_lab_7/data/model/productmodel.dart';
@@ -231,7 +233,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Changeinfowidget()),
+                                builder: (context) => DetailUpdate()),
                           );
                         },
                         child: const Text(
@@ -250,7 +252,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => DangNhap()),
+                            MaterialPageRoute(builder: (context) => LoginScreen()),
                           );
                         },
                         child: const Text(
