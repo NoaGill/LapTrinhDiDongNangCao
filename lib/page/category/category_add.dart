@@ -38,7 +38,6 @@ class _CategoryAddState extends State<CategoryAdd> {
     final description = _descController.text;
     final image = _imageController.text;
     var pref = await SharedPreferences.getInstance();
-
     //update
     await APIRepository().updateCategory(
         id,
@@ -67,9 +66,9 @@ Future<void> _pickImage() async {
       _descController.text = widget.categoryModel!.desc;
     }
     if (widget.isUpdate) {
-      titleText = "Update Category";
+      titleText = "Cập nhật";
     } else
-      titleText = "Add New Category";
+      titleText = "Thêm mới";
   }
 
   @override
@@ -88,7 +87,7 @@ Future<void> _pickImage() async {
               controller: _nameController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Enter name',
+                hintText: 'Nhập tên',
               ),
             ),
             Row(
@@ -98,7 +97,7 @@ Future<void> _pickImage() async {
                       controller: _imageController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Enter image URL',
+                        hintText: 'Đường dẫn hình ảnh',
                       ),
                     ),
                   ),
@@ -114,7 +113,7 @@ Future<void> _pickImage() async {
               maxLines: 7,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Enter description',
+                hintText: 'Mô tả',
               ),
             ),
             const SizedBox(height: 16.0),
@@ -127,7 +126,7 @@ Future<void> _pickImage() async {
                       : _onSave();
                 },
                 child: const Text(
-                  'Save',
+                  'Lưu',
                   style: TextStyle(
                     fontSize: 16.0,
                   ),

@@ -16,8 +16,7 @@ class _RegisterState extends State<Register> {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _numberIDController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _schoolKeyController = TextEditingController();
   final TextEditingController _schoolYearController = TextEditingController();
@@ -45,7 +44,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Register"),
+        title: const Text("Đăng kí"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -57,11 +56,11 @@ class _RegisterState extends State<Register> {
                 Container(
                   alignment: Alignment.center,
                   child: const Text(
-                    'Register Info',
+                    'Thông tin đăng kí',
                     style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue),
+                        color: Colors.red),
                   ),
                 ),
                 signUpWidget(),
@@ -82,7 +81,10 @@ class _RegisterState extends State<Register> {
                             print(respone);
                           }
                         },
-                        child: const Text('Register'),
+                        child: const Text('Đăng kí',
+                        style: TextStyle(color: Colors.white),),
+                        style: const ButtonStyle(
+                          backgroundColor: WidgetStatePropertyAll(Color.fromRGBO(227, 34, 39, 1)),),
                       ),
                     ),
                     const SizedBox(
@@ -100,11 +102,11 @@ class _RegisterState extends State<Register> {
 
   getGender() {
     if (_gender == 1) {
-      return "Male";
+      return "Nam";
     } else if (_gender == 2) {
-      return "Female";
+      return "Nữ";
     }
-    return "Other";
+    return "Khác";
   }
 
   //có thể thêm các biến cho phù hợp với từng field
@@ -124,7 +126,7 @@ class _RegisterState extends State<Register> {
             labelText: label,
             icon: Icon(icon),
             border: const OutlineInputBorder(),
-            errorText: controller.text.trim().isEmpty ? 'Please enter' : null,
+            errorText: controller.text.trim().isEmpty ? 'Vui lòng nhập thông tin' : null,
             focusedErrorBorder: controller.text.isEmpty
                 ? const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.red))
@@ -140,27 +142,23 @@ class _RegisterState extends State<Register> {
   Widget signUpWidget() {
     return Column(
       children: [
-        textField(_accountController, "Account", Icons.person),
-        textField(_passwordController, "Password", Icons.password),
-        textField(
-          _confirmPasswordController,
-          "Confirm password",
-          Icons.password,
-        ),
-        textField(_fullNameController, "Full Name", Icons.text_fields_outlined),
-        textField(_numberIDController, "NumberID", Icons.key),
-        textField(_phoneNumberController, "PhoneNumber", Icons.phone),
-        textField(_birthDayController, "BirthDay", Icons.date_range),
-        textField(_schoolYearController, "SchoolYear", Icons.school),
-        textField(_schoolKeyController, "SchoolKey", Icons.school),
-        const Text("What is your Gender?"),
+        textField(_accountController, "Tài khoản", Icons.person),
+        textField(_passwordController, "Mật khẩu", Icons.password),
+        textField(_confirmPasswordController,"Xác nhận mật khẩu",Icons.password),
+        textField(_fullNameController, "Tên đầy đủ", Icons.text_fields_outlined),
+        textField(_numberIDController, "ID", Icons.key),
+        textField(_phoneNumberController, "Số điện thoại", Icons.phone),
+        textField(_birthDayController, "Ngày sinh", Icons.date_range),
+        textField(_schoolYearController, "Năm học", Icons.school),
+        textField(_schoolKeyController, "Khóa học", Icons.school),
+        const Text("Giới tính của bạn là gì?"),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: ListTile(
                 contentPadding: const EdgeInsets.all(0),
-                title: const Text("Male"),
+                title: const Text("Nam"),
                 leading: Transform.translate(
                     offset: const Offset(16, 0),
                     child: Radio(
@@ -177,7 +175,7 @@ class _RegisterState extends State<Register> {
             Expanded(
               child: ListTile(
                   contentPadding: const EdgeInsets.all(0),
-                  title: const Text("Female"),
+                  title: const Text("Nữ"),
                   leading: Transform.translate(
                     offset: const Offset(16, 0),
                     child: Radio(
@@ -194,7 +192,7 @@ class _RegisterState extends State<Register> {
             Expanded(
                 child: ListTile(
               contentPadding: const EdgeInsets.all(0),
-              title: const Text("Other"),
+              title: const Text("Khác"),
               leading: Transform.translate(
                   offset: const Offset(16, 0),
                   child: Radio(
@@ -213,7 +211,7 @@ class _RegisterState extends State<Register> {
         TextFormField(
           controller: _imageURL,
           decoration: const InputDecoration(
-            labelText: "Image URL",
+            labelText: "Hình ảnh",
             icon: Icon(Icons.image),
           ),
         ),

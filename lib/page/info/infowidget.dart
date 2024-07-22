@@ -154,37 +154,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                         textAlign: TextAlign.end,
                       )),
                     ]),
-                //nhap fullname
-                // const Divider(
-                //   color: Colors.grey,
-                // ),
-                // const SizedBox(height: 16),
-                //  Row(
-                //     // Sắp xếp các widget con cách đều nhau
-                //     children: [
-                //       Expanded(
-                //         flex: 1,
-                //           child: Align(
-                //         alignment: Alignment.centerLeft,
-                //         child: Icon(
-                //           Icons.email_outlined,
-                //           size: 24.0,
-                //         ),
-                //       )),
-                //       Expanded(
-                //         flex: 3,
-                //           child: Align(
-                //         alignment: Alignment.centerLeft,
-                //         child: Text("School Year")
-                //       )),
-                //       Expanded(
-                //         flex: 6,
-                //           child: Text(
-                //         "lehuuben@gmail.com",
-                //         textAlign: TextAlign.end,
-                //       )),
-                //     ]),
-                //nhap fullname
+                
                 const Divider(
                   color: Colors.grey,
                 ),

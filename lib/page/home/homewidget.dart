@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_application_didongnangcao/page/home/home_list.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 
@@ -30,42 +31,8 @@ class _HomewidgetState extends State<Homewidget> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Trang Chủ"),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //     labelText: 'Tìm kiếm',
-                //     hintText: 'Tìm kiếm...',
-                //     prefixIcon: Icon(Icons.search),
-                //     filled: true, // Bật nền cho trường
-                //     fillColor: Colors.white, // Màu nền
-                //     contentPadding:
-                //         EdgeInsets.all(16.0), // Khoảng cách nội dung
-                //     border: OutlineInputBorder(
-                //       borderRadius:
-                //           BorderRadius.circular(20.0), // Bo tròn các góc
-                //     ),
-                //   ),
-                // ),
-
-                //nhap fullname
-                const SizedBox(height: 16),
-                // CarouselSlider.builder(
-                //     carouselController: controller,
-                //     itemCount: urlImages.length,
-                //     itemBuilder: (context, index, realIndex) {
-                //       final urlImage = urlImages[index];
-                //       return buildImage(urlImage, index);
-                //     },
-                //     options: CarouselOptions(
-                //         height: 200,
-                //         autoPlay: true,
-                //         enableInfiniteScroll: false,
-                //         autoPlayAnimationDuration: Duration(seconds: 2),
-                //         enlargeCenterPage: true,
-                //         onPageChanged: (index, reason) =>
-                //             setState(() => activeIndex = index))),
-                // SizedBox(height: 12),
-                // buildIndicator()
+                HomeBuilder(),
+                
               ],
             ),
           ),

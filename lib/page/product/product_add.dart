@@ -106,9 +106,9 @@ class _ProductAddState extends State<ProductAdd> {
       _catIdController.text = widget.productModel!.categoryId.toString();
     }
     if (widget.isUpdate) {
-      titleText = "Update Product";
+      titleText = "Cập nhật";
     } else
-      titleText = "Add New Product";
+      titleText = "Thêm mới";
   }
 
   @override
@@ -125,7 +125,7 @@ class _ProductAddState extends State<ProductAdd> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
-                'Name:',
+                'Tên:',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
@@ -137,12 +137,12 @@ class _ProductAddState extends State<ProductAdd> {
                 inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[^\p{M}]+', unicode: true))],
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter name',
+                  hintText: 'Nhập tên',
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Price:',
+                'Số lượng bàn:',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
@@ -153,12 +153,12 @@ class _ProductAddState extends State<ProductAdd> {
                 controller: _priceController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter price',
+                  hintText: 'Số lượng bàn',
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Image:',
+                'Hình ảnh:',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
@@ -172,7 +172,7 @@ class _ProductAddState extends State<ProductAdd> {
                       controller: _imgController,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Enter image URL',
+                        hintText: 'Đường dẫn hình ảnh',
                       ),
                     ),
                   ),
@@ -184,7 +184,7 @@ class _ProductAddState extends State<ProductAdd> {
               ),
               const SizedBox(height: 20),
               const Text(
-                'Desciption:',
+                'Địa chỉ:',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
@@ -197,12 +197,12 @@ class _ProductAddState extends State<ProductAdd> {
                 maxLines: 5,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter description',
+                  hintText: 'Nhập địa chỉ',
                 ),
               ),
               const SizedBox(height: 20),
               const Text(
-                'Category:',
+                'Danh mục:',
                 style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500,
