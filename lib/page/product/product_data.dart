@@ -73,25 +73,25 @@ class _ProductBuilderState extends State<ProductBuilder> {
             //         height: 128,
             //         fit: BoxFit.cover,
             //         image: FileImage(File((pro.imageUrl).toString()))),
-            if(pro.imageUrl != null)
-              Container(
-                height: 110,
-                width: 110,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: Colors.white,
-                  image: DecorationImage(
-                    image: AssetImage(pro.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: Image(
-                    width: 128,
-                    height: 128,
-                    fit: BoxFit.cover,
-                    image: FileImage(File(pro.imageUrl))),
-              ),
+            // if(pro.imageUrl != null)
+            //   Container(
+            //     height: 110,
+            //     width: 110,
+            //     decoration: BoxDecoration(
+            //       shape: BoxShape.rectangle,
+            //       color: Colors.white,
+            //       image: DecorationImage(
+            //         image: AssetImage(pro.imageUrl),
+            //         fit: BoxFit.cover,
+            //       ),
+            //     ),
+            //     alignment: Alignment.center,
+            //     child: Image(
+            //         width: 128,
+            //         height: 128,
+            //         fit: BoxFit.cover,
+            //         image: FileImage(File(pro.imageUrl))),
+            //   ),
             const SizedBox(width: 10),
             Expanded(
               child: Column(

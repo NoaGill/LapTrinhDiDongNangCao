@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_didongnangcao/page/category/category_list.dart';
 import 'package:flutter_application_didongnangcao/page/favorite/favoritewidget.dart';
+import 'package:flutter_application_didongnangcao/page/home/home_list.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
 import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
 import 'package:flutter_application_didongnangcao/page/product/product_list.dart';
@@ -58,7 +60,7 @@ class _MainpageState extends State<Mainpage> {
   
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Homewidget(),
+    HomeBuilder(),
     Favoritewidget(),
     InfoWidget(),
   ];
@@ -186,7 +188,17 @@ class _MainpageState extends State<Mainpage> {
                     ); 
                 },
               ),
-           
+           if(user.idNumber == "082203004113")
+                ListTile(
+                leading: const Icon(Icons.exit_to_app),
+                title: const Text('Quản Lí Danh Mục'),
+                onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CategoryList()),
+                    ); 
+                },
+              ),
             
           ],
         ),

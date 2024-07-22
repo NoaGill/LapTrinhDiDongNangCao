@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_application_didongnangcao/model/user.dart';
 import 'package:flutter_application_didongnangcao/page/info/changeinfowidget.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
 
@@ -12,6 +15,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 //import '../../data/model/product_viewmodel.dart';
 
 class InfoWidget extends StatefulWidget {
@@ -19,6 +24,7 @@ class InfoWidget extends StatefulWidget {
 
   @override
   State<InfoWidget> createState() => _InfoWidgetState();
+  
 }
 
 class _InfoWidgetState extends State<InfoWidget> {
@@ -44,6 +50,26 @@ class _InfoWidgetState extends State<InfoWidget> {
       });
     }
   }
+  int _selectedIndex = 0;
+  User user = User.userEmpty();
+  //int _selectedIndex = 0;
+  //static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+   getDataUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String strUser = pref.getString('user')!;
+
+    user = User.fromJson(jsonDecode(strUser));
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getDataUser();
+    print(user.imageURL);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -67,13 +93,13 @@ class _InfoWidgetState extends State<InfoWidget> {
                 ),
                 ClipOval(
                   child: Image.asset(
-                    'assets/images/user.png',
+                    "assets/images/user.png",
                     width: 100,
                     height: 100,
                   ),
                 ),
                 const SizedBox(height: 16),
-                const Row(
+                 Row(
                     // Sắp xếp các widget con cách đều nhau
                     children: [
                       Expanded(
@@ -94,7 +120,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                       Expanded(
                         flex: 6,
                           child: Text(
-                        "Lê Hữu Bền",
+                        user.fullName.toString(),
                         textAlign: TextAlign.end,
                       )),
                     ]),
@@ -104,7 +130,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                 ),
                 const SizedBox(height: 16),
                 //email
-                const Row(
+                 Row(
                     // Sắp xếp các widget con cách đều nhau
                     children: [
                       Expanded(
@@ -125,46 +151,46 @@ class _InfoWidgetState extends State<InfoWidget> {
                       Expanded(
                         flex: 6,
                           child: Text(
-                        "0367703344",
+                        user.phoneNumber.toString(),
                         textAlign: TextAlign.end,
                       )),
                     ]),
+                //nhap fullname
+                // const Divider(
+                //   color: Colors.grey,
+                // ),
+                // const SizedBox(height: 16),
+                //  Row(
+                //     // Sắp xếp các widget con cách đều nhau
+                //     children: [
+                //       Expanded(
+                //         flex: 1,
+                //           child: Align(
+                //         alignment: Alignment.centerLeft,
+                //         child: Icon(
+                //           Icons.email_outlined,
+                //           size: 24.0,
+                //         ),
+                //       )),
+                //       Expanded(
+                //         flex: 3,
+                //           child: Align(
+                //         alignment: Alignment.centerLeft,
+                //         child: Text("School Year")
+                //       )),
+                //       Expanded(
+                //         flex: 6,
+                //           child: Text(
+                //         "lehuuben@gmail.com",
+                //         textAlign: TextAlign.end,
+                //       )),
+                //     ]),
                 //nhap fullname
                 const Divider(
                   color: Colors.grey,
                 ),
                 const SizedBox(height: 16),
-                const Row(
-                    // Sắp xếp các widget con cách đều nhau
-                    children: [
-                      Expanded(
-                        flex: 1,
-                          child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Icon(
-                          Icons.email_outlined,
-                          size: 24.0,
-                        ),
-                      )),
-                      Expanded(
-                        flex: 3,
-                          child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text("Email")
-                      )),
-                      Expanded(
-                        flex: 6,
-                          child: Text(
-                        "lehuuben@gmail.com",
-                        textAlign: TextAlign.end,
-                      )),
-                    ]),
-                //nhap fullname
-                const Divider(
-                  color: Colors.grey,
-                ),
-                const SizedBox(height: 16),
-                const Row(
+                 Row(
                     // Sắp xếp các widget con cách đều nhau
                     children: [
                       Expanded(
@@ -185,7 +211,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                       Expanded(
                         flex: 6,
                           child: Text(
-                        "Nam",
+                        user.gender.toString(),
                         textAlign: TextAlign.end,
                       )),
                     ]),
@@ -194,7 +220,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                   color: Colors.grey,
                 ),
                 const SizedBox(height: 16),
-                const Row(
+                 Row(
                     // Sắp xếp các widget con cách đều nhau
                     children: [
                       Expanded(
@@ -215,7 +241,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                       Expanded(
                         flex: 6,
                           child: Text(
-                        "24/08/2003",
+                        user.birthDay.toString(),
                         textAlign: TextAlign.end,
                       )),
                     ]),

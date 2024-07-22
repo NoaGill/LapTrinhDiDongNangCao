@@ -1,9 +1,11 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_application_didongnangcao/data/api.dart';
 import 'package:flutter_application_didongnangcao/model/category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_didongnangcao/model/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:characters/characters.dart';
 class ProductAdd extends StatefulWidget {
   final bool isUpdate;
   final ProductModel? productModel;
@@ -132,6 +134,7 @@ class _ProductAddState extends State<ProductAdd> {
               const SizedBox(height: 10),
               TextField(
                 controller: _nameController,
+                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[^\p{M}]+', unicode: true))],
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter name',
@@ -189,6 +192,7 @@ class _ProductAddState extends State<ProductAdd> {
               ),
               const SizedBox(height: 10),
               TextField(
+                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[^\p{M}]+', unicode: true))],
                 controller: _desController,
                 maxLines: 5,
                 decoration: const InputDecoration(
