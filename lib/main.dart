@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_didongnangcao/auth/login.dart';
 import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
 import 'package:flutter_application_didongnangcao/page/home/homewidget.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
@@ -17,6 +18,6 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Mainpage(),);
+    home: LoginScreen(),);
   }
 }

@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_didongnangcao/page/favorite/favoritewidget.dart';
 import 'package:flutter_application_didongnangcao/page/info/infowidget.dart';
 import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
+import 'package:flutter_application_didongnangcao/page/product/product_list.dart';
 import 'page/home/homewidget.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangki.dart';
 import 'package:flutter_application_didongnangcao/page/login/dangnhap.dart';
-// import 'package:flutter_application_lab_7/page/homewiget.dart';
-// import 'package:flutter_application_lab_7/page/product/productlist.dart';
-// import 'package:flutter_application_lab_7/page/product/productcart.dart';
-// import 'package:provider/provider.dart';
-// import '../data/model/product_viewmodel.dart';
-// import '../data/model/cartcounter.dart';
+import 'dart:convert';
+import 'package:flutter_application_didongnangcao/model/category.dart';
+import 'package:flutter_application_didongnangcao/model/user.dart';
+//import 'package:flutter_application_didongnangcao/page/cart/cart_screen.dart';
+import 'package:flutter_application_didongnangcao/page/detail/detail.dart';
+//import 'package:flutter_application_didongnangcao/page/history/history_screen.dart';
+//import 'package:flutter_application_didongnangcao/page/home/home_screen.dart';
+// import 'package:flutter_application_didongnangcao/route/page1.dart';
+// import 'package:flutter_application_didongnangcao/route/page2.dart';
+// import 'package:flutter_application_didongnangcao/route/page3.dart';
+import 'package:flutter/material.dart';
+//import 'app/page/defaultwidget.dart';
+import 'data/sharepre.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Mainpage extends StatefulWidget {
   const Mainpage({Key? key}) : super(key: key);
@@ -21,13 +30,32 @@ class Mainpage extends StatefulWidget {
 
 class _MainpageState extends State<Mainpage> {
   int _selectedIndex = 0;
+  User user = User.userEmpty();
+  //int _selectedIndex = 0;
   //static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+   getDataUser() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String strUser = pref.getString('user')!;
+
+    user = User.fromJson(jsonDecode(strUser));
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getDataUser();
+    print(user.imageURL);
+  }
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
+
+  
 
   static const List<Widget> _widgetOptions = <Widget>[
     Homewidget(),
@@ -37,12 +65,12 @@ class _MainpageState extends State<Mainpage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      
       appBar: AppBar(
         iconTheme: IconThemeData(
-            color: Colors.white, // Thay đổi màu ở đây
-          ),
+          color: Colors.white, // Thay đổi màu ở đây
+        ),
         title: const Text(
           "Triangle",
           style: TextStyle(color: Colors.white, fontSize: 32),
@@ -51,8 +79,11 @@ class _MainpageState extends State<Mainpage> {
         
         actions: <Widget>[
           IconButton(
-            icon:
-                Image.asset('assets/images/logo.png',width: 50,height: 50,), // Hiển thị ảnh từ assets
+            icon: Image.asset(
+              'assets/images/logo.png',
+              width: 50,
+              height: 50,
+            ), // Hiển thị ảnh từ assets
             onPressed: () {
               Navigator.push(
                 context,
@@ -68,13 +99,13 @@ class _MainpageState extends State<Mainpage> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
+             DrawerHeader(
               decoration: const BoxDecoration(
                 color: Color.fromRGBO(227, 34, 39, 1),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children:  [
                   CircleAvatar(
                     radius: 40,
                     backgroundImage: AssetImage('assets/images/user.png'),
@@ -82,11 +113,18 @@ class _MainpageState extends State<Mainpage> {
                   SizedBox(
                     height: 8,
                   ),
-                  Text('Lê Hữu Bền',style: TextStyle(color: Colors.white),),
-                  Text('lehuuben@gmail.com',style: TextStyle(color: Colors.white),),
+                  Text(
+                    user.fullName.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Text(
+                    user.birthDay.toString(),
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ],
               ),
             ),
+          
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text('Trang chủ'),
@@ -137,6 +175,19 @@ class _MainpageState extends State<Mainpage> {
                 );
               },
             ),
+            if(user.idNumber == "082203004113")
+                ListTile(
+                leading: const Icon(Icons.exit_to_app),
+                title: const Text('Quản Lí'),
+                onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProductList()),
+                    ); 
+                },
+              ),
+           
+            
           ],
         ),
       ),
@@ -147,8 +198,6 @@ class _MainpageState extends State<Mainpage> {
               icon: Icon(Icons.home_outlined), label: 'Trang chủ'),
           BottomNavigationBarItem(
               icon: Icon(Icons.heart_broken_outlined), label: 'Yêu thích'),
-          // BottomNavigationBarItem(icon: Icon(Icons.percent_outlined),
-          // label: 'Offer'),
           BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined), label: 'Thông tin'),
         ],
